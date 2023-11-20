@@ -13,7 +13,7 @@ import { Status } from '../enum/status.enum';
   providedIn: 'root',
 })
 export class ServerService {
-  private apiUrl = 'any';
+  private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
