@@ -5,7 +5,9 @@ import com.kennethdamcs.server.model.Response;
 import com.kennethdamcs.server.model.Server;
 import com.kennethdamcs.server.service.implementation.ServerServiceImplementation;
 import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,6 +67,42 @@ public class ServerResource {
         );
     }
 
+//@PostMapping("/save")
+//public ResponseEntity<Response> saveServer(@RequestBody @Valid Server server) {
+//    try {
+//        Server createdServer = serverService.create(server);
+//
+//        return ResponseEntity.ok(
+//                Response.builder()
+//                        .timeStamp(now())
+//                        .data(Map.of("servers", createdServer))
+//                        .message("Server created successfully")
+//                        .status(HttpStatus.CREATED)
+//                        .statusCode(HttpStatus.CREATED.value())
+//                        .build()
+//        );
+//    } catch (ValidationException ex) {
+//        // Handle validation errors and return an appropriate response
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//                .body(Response.builder()
+//                        .timeStamp(now())
+//                        .message("Validation failed")
+//                        .status(HttpStatus.BAD_REQUEST)
+//                        .statusCode(HttpStatus.BAD_REQUEST.value())
+//                        .build());
+//    } catch (Exception ex) {
+//        // Handle other exceptions and return an appropriate response
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body(Response.builder()
+//                        .timeStamp(now())
+//                        .message("Server creation failed")
+//                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                        .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+//                        .build());
+//    }
+//}
+
+
     @GetMapping("/get/{id}")
     public ResponseEntity<Response> getServer(@PathVariable("id") Long id){
         return ResponseEntity.ok(
@@ -93,6 +131,6 @@ public class ServerResource {
 
     @GetMapping (path = "/image/{fileName}", produces = IMAGE_PNG_VALUE)
     public byte[] deleteServer(@PathVariable("fileName") String fileName) throws IOException {
-        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "repos/spring-boot-tutorial-2-images/" +fileName));
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home") + "/repos/spring-boot-tutorial-2-images/" +fileName));
     }
 }
