@@ -21,6 +21,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/server")
 @RequiredArgsConstructor

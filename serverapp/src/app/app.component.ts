@@ -4,8 +4,9 @@ import { RouterOutlet } from '@angular/router';
 import { ServerService } from './service/server.service';
 import { Observable, catchError, map, of, startWith } from 'rxjs';
 import { AppState } from './interface/app-state';
-import { CustomeResponse } from './interface/custom-response';
+import { CustomResponse } from './interface/custom-response';
 import { DataState } from './enum/data-state.enum';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import { DataState } from './enum/data-state.enum';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  appState$: Observable<AppState<CustomeResponse>>;
+  appState$: Observable<AppState<CustomResponse>>;
   constructor(private serverService: ServerService) {}
 
   ngOnInit(): void {
